@@ -1,0 +1,10 @@
+# Terraform
+.terraform/
+tfplan
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Credentials
+*.pem
+*.key
