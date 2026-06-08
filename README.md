@@ -1,6 +1,6 @@
 # Arostark-Core Infrastructure
 
-Production-grade AWS cloud infrastructure for Arostark, built and managed with Terraform.
+Production-grade AWS cloud infrastructure for Arostark, built and managed with Terraform. Security-first.
 
 ## Architecture Overview
 
@@ -10,26 +10,36 @@ Production-grade AWS cloud infrastructure for Arostark, built and managed with T
 - **Internet Gateway** — Controlled internet access for public subnet
 - **Route Tables** — Traffic routing rules enforcing network segmentation
 
-## Security Principles
+## Security Stack
 
-- Network segmentation via public/private subnets
-- All resources tagged and managed by Terraform — no manual console changes
-- Least privilege networking — private resources have no direct internet exposure
+- **CloudTrail** — Every API call logged across all regions with tamper detection via log file validation
+- **GuardDuty** — Active threat detection monitoring for malicious activity and unauthorized behavior
+- **Security Hub** — Centralized security findings aggregated against CIS AWS Foundations Benchmark v1.2.0
+- **SNS Alerts** — Real-time email notifications on security findings
+
+## CI/CD
+
+- GitHub Actions runs Terraform plan on every push to main
+- Zero manual infrastructure changes — everything is code
 
 ## Stack
 
-- AWS (VPC, Subnets, IGW, Route Tables)
+- AWS (VPC, CloudTrail, GuardDuty, Security Hub, SNS, S3)
 - Terraform v1.15.5
-- GitHub Actions (coming soon)
+- GitHub Actions
 
 ## Project Status
 
 | Component | Status |
 |---|---|
-| VPC & Networking | ✅ Complete |
-| Security Layer (GuardDuty, CloudTrail) | 🔄 In Progress |
-| GitHub Actions CI/CD | ⏳ Planned |
-| AI Integration | ⏳ Planned |
+| VPC & Networking | Complete |
+| CloudTrail Audit Logging | Complete |
+| GuardDuty Threat Detection | Complete |
+| Security Hub + CIS Benchmark | Complete |
+| SNS Security Alerts | Complete |
+| GitHub Actions CI/CD | Complete |
+| Lambda Auto-Remediation | In Progress |
+| AI Integration | Planned |
 
 ## Screenshots
 
