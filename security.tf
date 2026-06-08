@@ -65,3 +65,26 @@ resource "aws_s3_bucket_policy" "cloudtrail" {
     ]
   })
 }
+
+resource "aws_sns_topic" "security_alerts" {
+  name = "${var.project_name}-security-alerts"
+
+  tags = {
+    Name        = "${var.project_name}-security-alerts"
+    Environment = var.environment
+    ManagedBy   = "terraform"
+  }
+}
+
+resource "aws_sns_topic_subscription" "security_alerts_email" {
+  topic_arn = aws_sns_topic.security_alerts.arn
+  protocol  = "email"
+  endpoint  = "ronnienter@gmail.com"
+}
+
+resource "aws_securityhub_account" "main" {}
+
+resource "aws_securityhub_standards_subscription" "cis" {
+  depends_on    = [aws_securityhub_account.main]
+  standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+}
