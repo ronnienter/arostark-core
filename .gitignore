@@ -8,3 +8,4 @@ tfplan
 # Credentials
 *.pem
 *.key
+.rubbesh.txt
