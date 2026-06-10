@@ -24,7 +24,7 @@ Production-grade AWS cloud infrastructure for Arostark, built and managed with T
 
 ## Stack
 
-- AWS (VPC, CloudTrail, GuardDuty, Security Hub, SNS, S3)
+- AWS (VPC, CloudTrail, GuardDuty, Security Hub CSPM, SNS, S3, Lambda, Config)
 - Terraform v1.15.5
 - GitHub Actions
 
