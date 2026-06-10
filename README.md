@@ -38,8 +38,9 @@ Production-grade AWS cloud infrastructure for Arostark, built and managed with T
 | Security Hub + CIS Benchmark | Complete |
 | SNS Security Alerts | Complete |
 | GitHub Actions CI/CD | Complete |
-| Lambda Auto-Remediation | In Progress |
-| AI Integration | Planned |
+| Lambda Auto-Remediation | Complete |
+| AWS Config Resource Recording | Complete |
+| AI Integration | Planned, coming soon |
 
 ## Screenshots
 

@@ -114,12 +114,16 @@ resource "aws_securityhub_standards_subscription" "cis" {
 
 resource "aws_config_configuration_recorder" "main" {
   name     = "${var.project_name}-config-recorder"
-  role_arn = aws_iam_role.config.arn
+  role_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/config.amazonaws.com/AWSServiceRoleForConfig"
 
   recording_group {
     all_supported                 = true
     include_global_resource_types = true
   }
+}
+
+resource "aws_iam_service_linked_role" "config" {
+  aws_service_name = "config.amazonaws.com"
 }
 
 resource "aws_config_delivery_channel" "main" {
